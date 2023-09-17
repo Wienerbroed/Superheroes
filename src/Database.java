@@ -34,6 +34,12 @@ public void addHero(Hero hero) {
     heroList.add(hero);
 
 }
+    public ArrayList<Hero> getHeroes() {
+        return heroList;
+    }
+    public void setHeroes(ArrayList<Hero> superheroes) {
+        this.heroList = superheroes;
+    }
 
 
     public ArrayList<Hero> searchHeroByName(String name){
