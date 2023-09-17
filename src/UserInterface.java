@@ -22,17 +22,17 @@ public class UserInterface {
 
 
             if (optionChoice == 1) {
-                System.out.println("New Hero name: ");
+                System.out.println("What name does your hero have? ");
                 String name = scanner.next();
-                System.out.println("New real name for your Hero: ");
+                System.out.println("What is your Heros real name? ");
                 String realName = scanner.next();
-                System.out.println("New power for your Hero: ");
+                System.out.println("What is your heroes power? ");
                 String superpower = scanner.next();
-                System.out.println("The year this Hero was created: ");
+                System.out.println("What year was your Hero created? ");
                 int yearCreated = scanner.nextInt();
-                System.out.println("Is your Hero human: ");
+                System.out.println("Is your Hero human? ");
                 String isHuman = scanner.next();
-                System.out.println("How strong is your Hero: ");
+                System.out.println("How strong is your Hero? ");
 
                 int strenght = scanner.nextInt();
 
@@ -65,30 +65,17 @@ public class UserInterface {
             if (optionChoice == 4) {
                     scanner = new Scanner(System.in);
                     ArrayList<Hero> heroList = database.getHeroes();
-                    System.out.print("""
-                ------------------------------------------
-                You have chosen "Edit Hero".
-                Please enter the number of the hero that
-                you would like to change:
-                ------------------------------------------
-                """);
+                    System.out.print("Please choose the Hero you would like to edit");
                     for (int i = 0; i < heroList.size(); i++) {
-                        System.out.println((i+1)+"---"+heroList.get(i));
+                        System.out.println((i+1)+""+heroList.get(i));
                     }
-                    System.out.print("------------------------------------------\n");
+                    System.out.print("\n");
                     int selection = scanner.nextInt();
-                    Hero selectedHero = heroList.get(selection-1); //removing 1 from the number to match index
+                    Hero selectedHero = heroList.get(selection-1);
 
-                    System.out.printf("""
-                ------------------------------------------
-                Selected hero:
-                %s
-                \u001B[31mPress enter to skip edit, otherwise fill
-                in an edit and press enter\u001B[0m
-                ------------------------------------------
-                """,selectedHero);
-                    System.out.print("Hero name: "+selectedHero.getName()+"\nNew name: ");
-                    scanner.nextLine(); //flush "nextInt()" input
+                    System.out.printf("Please fill out new information about your Hero",selectedHero);
+                    System.out.print("\n Hero name: "+selectedHero.getName()+"\nNew name: ");
+                    scanner.nextLine();
                     String name = scanner.nextLine();
                     if(name.isEmpty()){
                         name = selectedHero.getName();
@@ -120,9 +107,9 @@ public class UserInterface {
                         newStrength = ""+selectedHero.getStrength();
                     }
                     double strength = Double.parseDouble(newStrength);
-                    //using values to make a new superhero
+
                     Hero newHero = new Hero(name, realName,superPower,yearCreated,isHuman,strength);
-                    //adds the hero to the database on the same spot as the hero that was selected
+
                     heroList.set((selection-1),newHero);
                     database.setHeroes(heroList);
                     System.out.printf("""

@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import  java.util.List;
-import java.util.Arrays;
+
 
 public class Database {
     private ArrayList<Hero> heroList;
@@ -54,29 +53,11 @@ public void addHero(Hero hero) {
     }
 
 
-
-
-/*public ArrayList<Superhero> searchHeroByName(String name){
-        ArrayList<Superhero> heroList = new ArrayList<>();
-        for (Superhero hero: superheroes) {
-            if(hero.getName().toLowerCase().contains(name.toLowerCase()) ||
-                    hero.getRealName().toLowerCase().contains(name.toLowerCase())){
-                heroList.add(hero);
-            }
-        }
-        return heroList;
-    } */
-
     @Override
     public String toString() {
         return "\n" + heroList +
                 '}';
     }
-
-
-
-
-
 
 }
 
