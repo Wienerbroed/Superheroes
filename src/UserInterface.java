@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -10,15 +11,22 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
 
 
+
         do {
+
             System.out.println("Do you wish to add a Hero? (1)  " +
                     "\nDo you wis to see your Herolist? (2)" +
                     "\nDo you wish to serch for a Hero? (3)" +
                     "\nDo you wish to edit a Hero? (4)" +
                     "\nDo you wish to Exit? (9)"
+
             );
 
+
+
             optionChoice = scanner.nextInt();
+
+
 
 
             if (optionChoice == 1) {
@@ -29,19 +37,39 @@ public class UserInterface {
                 System.out.println("What is your heroes power? ");
                 String superpower = scanner.next();
                 System.out.println("What year was your Hero created? ");
-                int yearCreated = scanner.nextInt();
+
+                int yearCreated;
+                try {
+                    yearCreated = scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("This is not a number please try again.");
+                    scanner.nextLine();
+                    continue;
+                }
+
+
                 System.out.println("Is your Hero human? ");
                 String isHuman = scanner.next();
                 System.out.println("How strong is your Hero? ");
 
-                int strenght = scanner.nextInt();
+
+                int strenght;
+                try{
+                    strenght = scanner.nextInt();
+                }catch (InputMismatchException e) {
+                    System.out.println("This is not a number please try again.");
+                    scanner.nextLine();
+                    continue;
+                }
 
                 Hero newHero = new Hero(name, realName, superpower, yearCreated, isHuman, strenght);
                 database.addHero(newHero);
 
+
                 System.out.println(newHero);
 
             }
+
             if (optionChoice == 2) {
                 System.out.println(database);
 
@@ -112,14 +140,10 @@ public class UserInterface {
 
                     heroList.set((selection-1),newHero);
                     database.setHeroes(heroList);
-                    System.out.printf("""
-                ------------------------------------------
-                \u001B[32mEdit complete!\u001B[0m
-                %s
-                ------------------------------------------
-                """,newHero);
+                    System.out.printf("New Hero: ",newHero);
                 }
             }
+
 
          while (optionChoice != 9);
         {
