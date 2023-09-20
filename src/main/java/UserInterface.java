@@ -92,13 +92,14 @@ public class UserInterface {
             }
             if (optionChoice == 4) {
                     scanner = new Scanner(System.in);
-                    ArrayList<Hero> heroList = database.getHeroes();
+                    ArrayList<Hero> heroList = database.getHeroes("");
                     System.out.print("Please choose the Hero you would like to edit");
                     for (int i = 0; i < heroList.size(); i++) {
                         System.out.println((i+1)+""+heroList.get(i));
                     }
                     System.out.print("\n");
                     int selection = scanner.nextInt();
+                    
                     Hero selectedHero = heroList.get(selection-1);
 
                     System.out.printf("Please fill out new information about your Hero",selectedHero);

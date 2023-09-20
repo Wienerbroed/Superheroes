@@ -33,7 +33,7 @@ public void addHero(Hero hero) {
     heroList.add(hero);
 
 }
-    public ArrayList<Hero> getHeroes() {
+    public ArrayList<Hero> getHeroes(String s) {
         return heroList;
     }
     public void setHeroes(ArrayList<Hero> superheroes) {
